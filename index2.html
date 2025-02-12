@@ -1,43 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <style>
-     body {
-        font-family: Arial, sans-serif;
+        body {
+            font-family: "Roboto Condensed", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: white;
-     }
-    
-        header {
-            background-color: purple;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
+            background-image: url('assets/img/image.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
         }
-        
 
+        header {
+            background-color: black;
+            padding: 10px 20px;
+            height: 130px;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
+        nav {
+            display: flex;
+        }
 
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
 
+        }
 
+        .topnav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+             }
 
+        .topnav input[type=text] {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-
-
-
-
-
-
-
-
+        .topnav input[type=text]:focus {
+            border-color: #2196F3;
+            box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
+        }
     </style>
 </head>
+
 <body>
-    <header style="background-image: url('assets/img/image.png'); background-size: cover; background-position: center center;"></header>
+    <header>
+        <nav>
+            <a href="index.html">LS homepage</a>
+            <a href="index2.html">Baggy Pants</a>
+            <a href="index3.html">Sweatshirts</a>
+            <a href="index4.html">T-shirts</a>
+            <a href="#">Contact us</a>
+
+        </nav>
+
+
+        <div class="topnav">
+            <input type="text" placeholder="Search..">
+        </div>
+
+
+    </header>
 </body>
+
 </html>
