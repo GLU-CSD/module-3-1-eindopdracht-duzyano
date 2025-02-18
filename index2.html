@@ -63,20 +63,20 @@
         }
 
         .product-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            margin-left: 780px;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            justify-content: right;
+            margin: 20px auto;
+            max-width: 1200px;
+            margin-left: 400px;
         }
 
         .product-card {
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 300px;
         }
@@ -107,13 +107,35 @@
         .product-card button:hover {
             background: lightskyblue;
         }
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 340vh;
+            position: fixed;
+            top: 2px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 
 <body>
     <header>
         <nav>
-            <a href="index.html">LS homepage</a>
+            <a href="index.html">DR homepage</a>
             <a href="index2.html">Baggy Pants</a>
             <a href="index3.html">Sweatshirts</a>
             <a href="index4.html">T-shirts</a>
@@ -127,31 +149,158 @@
     <div class="product-container">
         <div class="product-card">
             <img src="baggy clothes kleren/image.png" alt="Product afbeelding">
-            <h2>Product 1</h2>
+            <h2>Classic Baggy Jeans</h2>
             <p>€19,99</p>
-            <button onclick="addToCart('Product 1')">Toevoegen aan winkelwagen</button>
+            <button onclick="addToCart('Classic Baggy Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 19.png" alt="Product afbeelding">
+            <h2>Classic Baggy Jeans</h2>
+            <p>€10,99</p>
+            <button onclick="addToCart('classic jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 20.png" alt="Product afbeelding">
+            <h2>Classic Baggy Jeans</h2>
+            <p>€11,00</p>
+            <button onclick="addToCart('starboy jeans')">Toevoegen aan winkelwagen</button>
         </div>
 
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 2.png" alt="Product afbeelding">
-            <h2>Product 2</h2>
-            <p>€24,99</p>
-            <button onclick="addToCart('Product 2')">Toevoegen aan winkelwagen</button>
+            <h2>Retro Wide-Leg Pants</h2>
+            <p>€20,00</p>
+            <button onclick="addToCart('Retro Wide-Leg Pants')">Toevoegen aan winkelwagen</button>
         </div>
 
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 3.png" alt="Product afbeelding">
-            <h2>Product 2</h2>
-            <p>€24,99</p>
-            <button onclick="addToCart('Product 2')">Toevoegen aan winkelwagen</button>
+            <h2>Urban Loose-Fit Jeans</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Urban Loose-Fit Jeans')">Toevoegen aan winkelwagen</button>
         </div>
 
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 4.png" alt="Product afbeelding">
-            <h2>Product 2</h2>
-            <p>€24,99</p>
-            <button onclick="addToCart('Product 2')">Toevoegen aan winkelwagen</button>
+            <h2>Relaxed Fit Cargo Pants</h2>
+            <p>€10,00</p>
+            <button onclick="addToCart('Relaxed Fit Cargo Pants')">Toevoegen aan winkelwagen</button>
         </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 5.png" alt="Product afbeelding">
+            <h2>Streetwear Baggy Trousers</h2>
+            <p>€16,00</p>
+            <button onclick="addToCart('Streetwear Baggy Trousers')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 6.png" alt="Product afbeelding">
+            <h2>Oversized Denim Pants</h2>
+            <p>€24,99</p>
+            <button onclick="addToCart('Oversized Denim Pants')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 7.png" alt="Product afbeelding">
+            <h2>Slouchy Fit Jeans</h2>
+            <p>€28,99</p>
+            <button onclick="addToCart('Slouchy Fit Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 8.png" alt="Product afbeelding">
+            <h2>Vintage Baggy Denim</h2>
+            <p>€22,99</p>
+            <button onclick="addToCart('Vintage Baggy Denim')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 9.png" alt="Product afbeelding">
+            <h2>Heavyweight Wide-Leg Jeans</h2>
+            <p>€22,00</p>
+            <button onclick="addToCart('Heavyweight Wide-Leg Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 10.png" alt="Product afbeelding">
+            <h2>Comfy Street Baggy Pants</h2>
+            <p>€28,00</p>
+            <button onclick="addToCart('Comfy Street Baggy Pants')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 11.png" alt="Product afbeelding">
+            <h2>90s Throwback Baggy Jeans</h2>
+            <p>€24,99</p>
+            <button onclick="addToCart('90s Throwback Baggy Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 12.png" alt="Product afbeelding">
+            <h2>Skater Fit Denim</h2>
+            <p>€17,00</p>
+            <button onclick="addToCart('Skater Fit Denim')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 13.png" alt="Product afbeelding">
+            <h2>Loose-Fit Carpenter Pants</h2>
+            <p>€15,00</p>
+            <button onclick="addToCart('Loose-Fit Carpenter Pants')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 14.png" alt="Product afbeelding">
+            <h2>Chill Mode Wide Pants</h2>
+            <p>€12,00</p>
+            <button onclick="addToCart('Chill Mode Wide Pants')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 15.png" alt="Product afbeelding">
+            <h2>Extreme Comfort Baggy Jeans</h2>
+            <p>€30,00</p>
+            <button onclick="addToCart('Extreme Comfort Baggy Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 16.png" alt="Product afbeelding">
+            <h2>Modern Oversized Denim</h2>
+            <p>€24,99</p>
+            <button onclick="addToCart('Modern Oversized Denim')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 17.png" alt="Product afbeelding">
+            <h2>Casual Wide-Leg Pants</h2>
+            <p>€23,00</p>
+            <button onclick="addToCart('Casual Wide-Leg Pants')">Toevoegen aan winkelwagen</button>
+        </div>
+
+        <div class="product-card">
+            <img src="baggy clothes kleren/image copy 18.png" alt="Product afbeelding">
+            <h2>Street Classic Baggy Jeans</h2>
+            <p>€24,00</p>
+            <button onclick="addToCart('Street Classic Baggy Jeans')">Toevoegen aan winkelwagen</button>
+        </div>
+    </div>
+    
+
+    
+
+    <div class="sidebar">
+        <h2>Selecteer maat</h2>
+        <label for="size">Kies je maat:</label>
+        <select id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+
     </div>
 
     <script>
@@ -159,7 +308,8 @@
             alert(productName + " toegevoegd aan winkelwagen!");
         }
     </script>
+
+
 </body>
 
 </html>
-
