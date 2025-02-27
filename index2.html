@@ -7,7 +7,7 @@
     <title>Document</title>
     <style>
         body {
-            font-family: "Roboto Condensed", sans-serif;
+            font-family: "Roboto Condensed", serif;
             margin: 0;
             padding: 0;
             background-image: url('assets/img/image.png');
@@ -76,7 +76,7 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(148, 99, 99, 0.1);
             text-align: center;
             max-width: 300px;
         }
@@ -129,6 +129,40 @@
             font-size: 16px;
             line-height: 1.5;
         }
+
+        #sidebarafbeelding {
+            width: 260px;
+            height: 200px;
+            margin-top: 150px;
+
+        }
+
+        #winkelwagen {
+            width: 70px;
+            margin-top: 60px;
+            background-color: black;
+        }
+
+        #results {
+            display: none;
+            /* Lijst is standaard verborgen */
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 200px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #results li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #results li:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -141,8 +175,19 @@
             <a href="index4.html">T-shirts</a>
             <a href="#">Contact us</a>
         </nav>
+
+
         <div class="topnav">
             <input type="text" placeholder="Search..">
+            <ul id="results">
+                <li>Adele</li>
+                <li>Agnes</li>
+                <li>Billy</li>
+                <li>Bob</li>
+                <li>Calvin</li>
+                <li>Christina</li>
+                <li>Cindy</li>
+            </ul>
         </div>
     </header>
 
@@ -287,9 +332,9 @@
             <button onclick="addToCart('Street Classic Baggy Jeans')">Toevoegen aan winkelwagen</button>
         </div>
     </div>
-    
 
-    
+
+
 
     <div class="sidebar">
         <h2>Selecteer maat</h2>
@@ -301,6 +346,21 @@
             <option value="XL">XL</option>
         </select>
 
+        <h2>Filter op prijs</h2>
+        <label for="min-price">Min:</label>
+        <input type="number" id="min-price" placeholder="€0">
+        <label for="max-price">Max:</label>
+        <input type="number" id="max-price" placeholder="€100">
+        <button onclick="filterByPrice()">Filter</button>
+
+        <h2><img src="assets/img/image copy.png" alt="winkelwagen" id="winkelwagen"></h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Totaal: €0,00</p>
+        <button onclick="checkout()">Afrekenen</button>
+
+
+        <img src="assets/img/image.png" alt="sidebarafbeelding" id="sidebarafbeelding">
+
     </div>
 
     <script>
@@ -309,7 +369,38 @@
         }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("search");
+            const resultsList = document.getElementById("results");
+
+            // Verberg de lijst standaard
+            resultsList.style.display = "none";
+
+            // Toon de lijst wanneer de zoekbalk wordt aangeklikt
+            searchInput.addEventListener("focus", function () {
+                resultsList.style.display = "block";
+            });
+
+            // Verberg de lijst wanneer je ergens anders klikt
+            document.addEventListener("click", function (event) {
+                if (!searchInput.contains(event.target) && !resultsList.contains(event.target)) {
+                    resultsList.style.display = "none";
+                }
+            });
+        });
+    </script>
+
 
 </body>
+
+
 
 </html>
