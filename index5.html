@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webshop</title>
+    <style>
+  body {
+            font-family: "Roboto Condensed", serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('assets/img/image.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: black;
+            padding: 10px 20px;
+            height: 100px;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .topnav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .topnav input[type=text] {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .topnav input[type=text]:focus {
+            border-color: #2196F3;
+            box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 50px;
+            justify-content: right;
+            margin: 20px auto;
+            max-width: 1200px;
+            margin-left: 400px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(148, 99, 99, 0.1);
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-card h2 {
+            margin: 10px 0;
+        }
+
+        .product-card p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .product-card button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .product-card button:hover {
+            background: lightskyblue;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 340vh;
+            position: fixed;
+            top: 2px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        #sidebarafbeelding {
+            width: 260px;
+            height: 200px;
+            margin-top: 150px;
+
+        }
+
+        #winkelwagen {
+            width: 70px;
+            margin-top: 60px;
+            background-color: black;
+        }
+
+        #results {
+            display: none;
+            background-color: white;
+            border: 1px solid #ccc;
+            width: 200px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #results li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #results li:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">DR homepage</a>
+            <a href="index2.html">Baggy Pants</a>
+            <a href="index3.html">Sweatshirts</a>
+            <a href="index4.html">Hats</a>
+            <a href="index5.html">Get you Items!</a>
+            <a href="#">Contact us</a>
+            <button id="empty-cart">Empty Cart</button>
+        </nav>
+        <div class="topnav">
+            <input type="text" placeholder="Search..">
+        </div>
+    </header>
+
+    <div class="product-container">
+        <!-- Example Product Cards -->
+        <div class="product-card" data-name="Product 1" data-price="19.99">
+            <img src="assets/img/product1.jpg" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>€19.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-name="Product 2" data-price="29.99">
+            <img src="assets/img/product2.jpg" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>€29.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product-card" data-name="Product 3" data-price="39.99">
+            <img src="assets/img/product3.jpg" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>€39.99</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Total: €0.00</p>
+    </div>
+
+    <script>
+        // Function to update the cart display
+        function updateCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            cartList.innerHTML = '';
+            let totalPrice = 0;
+    
+            // Loop through cart items to display them
+            cart.forEach(item => { // Change cartItems to cart
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - €${item.price}`;
+                cartList.appendChild(listItem);
+                totalPrice += item.price;
+            });
+    
+            // Update total price
+            cartTotal.textContent = `Total: €${totalPrice.toFixed(2)}`;
+        }
+    
+        // Function to add product to cart
+        function addToCart(name, price) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        }
+    
+        // Function to empty the cart
+        function emptyCart() {
+            // Remove items from localStorage
+            localStorage.removeItem('cart');
+            // Update the cart view
+            updateCart();
+        }
+    
+        // Add event listeners to product cards to add them to cart
+        document.querySelectorAll('.product-card button').forEach(button => {
+            button.addEventListener('click', () => {
+                const productCard = button.closest('.product-card');
+                const name = productCard.getAttribute('data-name');
+                const price = parseFloat(productCard.getAttribute('data-price'));
+                addToCart(name, price);
+            });
+        });
+    
+        // Add event listener for the empty cart button
+        document.getElementById('empty-cart').addEventListener('click', emptyCart);
+    
+        // Initialize cart on page load
+        document.addEventListener('DOMContentLoaded', updateCart);
+    </script>
+    
