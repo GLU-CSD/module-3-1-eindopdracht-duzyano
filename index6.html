@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        .form-row {
+            margin-bottom: 30px;
+
+        }
+        .container{
+            background-color:white;
+            width: 350px;
+            height: 100vh;
+        }
+        
+
+        .gender-options {
+            display: flex;
+            gap: 15px; 
+        }
+
+        body {
+            background-color: lightblue;
+            font-family: "Roboto Condensed", serif;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-75">
+            <div class="container">
+                <form action="/action_page.php">
+                    <div class="row">
+                        <div class="col-20">
+                          
+
+                        
+                            <div class="form-row">
+                                <h3>Gegevens Invoer</h3>
+                                <label for="aanhef">Aanhef</label><br>
+                                <input type="radio" id="dhr" name="aanhef" value="Dhr.">
+                                <label for="dhr">Dhr.</label>
+                                <input type="radio" id="mevr" name="aanhef" value="Mevr.">
+                                <label for="mevr">Mevr.</label>
+                                <input type="radio" id="anders" name="aanhef" value="Anders">
+                                <label for="anders">Anders</label>
+                            </div>
+
+                 
+                            <div class="form-row">
+                                <label for="voornaam">Voornaam</label>
+                                <input type="text" id="voornaam" name="voornaam" placeholder="Voornaam" required>
+                            </div>
+
+                 
+                            <div class="form-row">
+                                <label for="tussenvoegsel">Tussenvoegsel</label>
+                                <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel">
+                            </div>
+
+                        
+                            <div class="form-row">
+                                <label for="achternaam">Achternaam</label>
+                                <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
+                            </div>
+
+                  
+                            <div class="form-row">
+                                <label for="straatnaam">Straatnaam</label>
+                                <input type="text" id="straatnaam" name="straatnaam" placeholder="Straatnaam" required>
+                            </div>
+
+                  
+                            <div class="form-row">
+                                <label for="huisnummer">Huisnummer</label>
+                                <input type="text" id="huisnummer" name="huisnummer" placeholder="Huisnummer" required>
+                            </div>
+
+             
+                            <div class="form-row">
+                                <label for="postcode">Postcode</label>
+                                <input type="text" id="postcode" name="postcode" placeholder="Postcode" required>
+                            </div>
+
+                   
+                            <div class="form-row">
+                                <label for="land">Land</label>
+                                <input type="text" id="land" name="land" placeholder="Land" required>
+                            </div>
+
+                       
+                            <div class="form-row">
+                                <label for="email">E-mailadres</label>
+                                <input type="email" id="email" name="email" placeholder="E-mailadres" required>
+                            </div>
+
+                      
+                            <div class="form-row">
+                                <label for="telefoonnummer">Telefoonnummer</label>
+                                <input type="tel" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer" required>
+                            </div>
+
+                   
+                            <div class="form-row">
+                                <label for="geboortedatum">Geboortedatum</label>
+                                <input type="date" id="geboortedatum" name="geboortedatum" required>
+                            </div>
+
+                      
+                            <div class="form-row">
+                                <label for="voorwaarden">
+                                    <input type="checkbox" id="voorwaarden" name="voorwaarden" required>
+                                    Algemene voorwaarden accepteren
+                                </label>
+                            </div>
+
+                      
+                            <div class="form-row">
+                                <input type="submit" value="Verzenden">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

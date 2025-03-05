@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+  
         body {
             font-family: "Roboto Condensed", serif;
             margin: 0;
@@ -18,6 +20,7 @@
             min-height: 100vh;
         }
 
+
         header {
             background-color: black;
             padding: 10px 20px;
@@ -25,12 +28,13 @@
             text-align: center;
             color: white;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
 
         nav {
             display: flex;
+            margin-left: 300px;
         }
 
         nav a {
@@ -39,6 +43,7 @@
             margin-left: 10px;
             margin-right: 10px;
         }
+
 
         .topnav {
             display: flex;
@@ -62,6 +67,30 @@
             box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
         }
 
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 2px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
         .product-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -71,6 +100,7 @@
             max-width: 1200px;
             margin-left: 400px;
         }
+
 
         .product-card {
             background: white;
@@ -108,90 +138,87 @@
             background: lightskyblue;
         }
 
-        .sidebar {
-            width: 250px;
-            background: black;
-            padding: 20px;
-            height: 340vh;
-            position: fixed;
-            top: 2px;
-            left: 0;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
 
-        .sidebar h2 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        #sidebarafbeelding {
-            width: 260px;
-            height: 200px;
-            margin-top: 150px;
-
-        }
-
-        #winkelwagen {
-            width: 70px;
-            margin-top: 60px;
-            background-color: black;
-        }
-
-        #results {
+        .sidebar-mobile-toggle {
             display: none;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0); 
+            }
+
+            .sidebar-mobile-toggle {
+                display: block; 
+                cursor: pointer;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+                margin-left: 0;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+
+        footer {
             background-color: white;
-            border: 1px solid #ccc;
-            width: 200px;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #results li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        #results li:hover {
-            background-color: #f1f1f1;
-            cursor: pointer;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
+    <div class="sidebar-mobile-toggle" onclick="toggleSidebar()">☰</div>
     <header>
+  
         <nav>
             <a href="index.html">DR homepage</a>
             <a href="index2.html">Baggy Pants</a>
             <a href="index3.html">Sweatshirts</a>
             <a href="index4.html">Hats</a>
-            <a href="index5.html">Get you Items!</a> 
+            <a href="index5.html">Get you Items!</a>
             <a href="#">Contact us</a>
         </nav>
 
-
         <div class="topnav">
             <input type="text" placeholder="Search..">
-            <ul id="results">
-                <li>Adele</li>
-                <li>Agnes</li>
-                <li>Billy</li>
-                <li>Bob</li>
-                <li>Calvin</li>
-                <li>Christina</li>
-                <li>Cindy</li>
-            </ul>
         </div>
     </header>
 
+    <div class="sidebar">
+        <h2>Selecteer maat</h2>
+        <label for="size">Kies je maat:</label>
+        <select id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+        
 
+        <h2>Filter op prijs</h2>
+        <label for="min-price">Min:</label>
+        <input type="number" id="min-price" placeholder="€0">
+        <label for="max-price">Max:</label>
+        <input type="number" id="max-price" placeholder="€100">
+        <button onclick="filterByPrice()">Filter</button>
+    </div>
 
     <div class="product-container">
         <div class="product-card">
@@ -333,76 +360,22 @@
             <p>€24,00</p>
             <button onclick="addToCart('Street Classic Baggy Jeans')">Toevoegen aan winkelwagen</button>
         </div>
+ 
     </div>
 
-
-
-
-    <div class="sidebar">
-        <h2>Selecteer maat</h2>
-        <label for="size">Kies je maat:</label>
-        <select id="size">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select>
-
-        <h2>Filter op prijs</h2>
-        <label for="min-price">Min:</label>
-        <input type="number" id="min-price" placeholder="€0">
-        <label for="max-price">Max:</label>
-        <input type="number" id="max-price" placeholder="€100">
-        <button onclick="filterByPrice()">Filter</button>
-
-        <h2><img src="assets/img/image copy.png" alt="winkelwagen" id="winkelwagen"></h2>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Totaal: €0,00</p>
-
-
-        <img src="assets/img/image.png" alt="sidebarafbeelding" id="sidebarafbeelding">
-
-    </div>
+    <footer>
+        <p>Our Services Are 100% real</p>
+        <a href="#">Socials</a>
+        <a href="#">Women clothes</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+    </footer>
 
     <script>
-        function addToCart(productName) {
-            alert(productName + " toegevoegd aan winkelwagen!");
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
         }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.getElementById("search");
-            const resultsList = document.getElementById("results");
-
-            // Verberg de lijst standaard
-            resultsList.style.display = "none";
-
-            // Toon de lijst wanneer de zoekbalk wordt aangeklikt
-            searchInput.addEventListener("focus", function () {
-                resultsList.style.display = "block";
-            });
-
-            // Verberg de lijst wanneer je ergens anders klikt
-            document.addEventListener("click", function (event) {
-                if (!searchInput.contains(event.target) && !resultsList.contains(event.target)) {
-                    resultsList.style.display = "none";
-                }
-            });
-        });
-    </script>
-    
-
-
 </body>
-
-
 
 </html>
