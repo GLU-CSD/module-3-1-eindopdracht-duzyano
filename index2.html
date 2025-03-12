@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
-  
         body {
             font-family: "Roboto Condensed", serif;
             margin: 0;
@@ -19,7 +18,6 @@
             background-attachment: fixed;
             min-height: 100vh;
         }
-
 
         header {
             background-color: black;
@@ -44,7 +42,6 @@
             margin-right: 10px;
         }
 
-
         .topnav {
             display: flex;
             align-items: center;
@@ -66,7 +63,6 @@
             border-color: #2196F3;
             box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
         }
-
 
         .sidebar {
             width: 250px;
@@ -100,7 +96,6 @@
             max-width: 1200px;
             margin-left: 400px;
         }
-
 
         .product-card {
             background: white;
@@ -138,23 +133,21 @@
             background: lightskyblue;
         }
 
-
         .sidebar-mobile-toggle {
             display: none;
         }
 
-        /* Mobile responsive styles */
         @media (max-width: 768px) {
             .sidebar {
                 transform: translateX(-100%);
             }
 
             .sidebar.active {
-                transform: translateX(0); 
+                transform: translateX(0);
             }
 
             .sidebar-mobile-toggle {
-                display: block; 
+                display: block;
                 cursor: pointer;
             }
 
@@ -180,13 +173,26 @@
             margin-top: 10px;
             text-align: center;
         }
+
+        .logoss img {
+            height: 120px;
+        }
+
+        #price-range {
+            width: 267px;
+            margin: 20% auto;
+            text-align: center;
+            margin-left: -10px;
+        }
     </style>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>
 
 <body>
     <div class="sidebar-mobile-toggle" onclick="toggleSidebar()">☰</div>
     <header>
-  
+
         <nav>
             <a href="index.html">DR homepage</a>
             <a href="index2.html">Baggy Pants</a>
@@ -199,6 +205,10 @@
         <div class="topnav">
             <input type="text" placeholder="Search..">
         </div>
+
+        <div class="logoss">
+            <img src="assets/img/image.png" alt="logoss">
+        </div>
     </header>
 
     <div class="sidebar">
@@ -210,14 +220,14 @@
             <option value="L">L</option>
             <option value="XL">XL</option>
         </select>
-        
 
-        <h2>Filter op prijs</h2>
-        <label for="min-price">Min:</label>
-        <input type="number" id="min-price" placeholder="€0">
-        <label for="max-price">Max:</label>
-        <input type="number" id="max-price" placeholder="€100">
-        <button onclick="filterByPrice()">Filter</button>
+       
+        <div id="price-range">
+            <div class="section price">
+                <div class="price-slider"></div>
+                <p class="price-value">€0 - €50</p>
+            </div>
+        </div>
     </div>
 
     <div class="product-container">
@@ -241,126 +251,128 @@
             <p>€11,00</p>
             <button onclick="addToCart('starboy jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 2.png" alt="Product afbeelding">
             <h2>Retro Wide-Leg Pants</h2>
             <p>€20,00</p>
             <button onclick="addToCart('Retro Wide-Leg Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 3.png" alt="Product afbeelding">
             <h2>Urban Loose-Fit Jeans</h2>
             <p>€21,99</p>
             <button onclick="addToCart('Urban Loose-Fit Jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 4.png" alt="Product afbeelding">
             <h2>Relaxed Fit Cargo Pants</h2>
             <p>€10,00</p>
             <button onclick="addToCart('Relaxed Fit Cargo Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 5.png" alt="Product afbeelding">
             <h2>Streetwear Baggy Trousers</h2>
             <p>€16,00</p>
             <button onclick="addToCart('Streetwear Baggy Trousers')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 6.png" alt="Product afbeelding">
             <h2>Oversized Denim Pants</h2>
             <p>€24,99</p>
             <button onclick="addToCart('Oversized Denim Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 7.png" alt="Product afbeelding">
             <h2>Slouchy Fit Jeans</h2>
             <p>€28,99</p>
             <button onclick="addToCart('Slouchy Fit Jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 8.png" alt="Product afbeelding">
             <h2>Vintage Baggy Denim</h2>
             <p>€22,99</p>
             <button onclick="addToCart('Vintage Baggy Denim')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 9.png" alt="Product afbeelding">
             <h2>Heavyweight Wide-Leg Jeans</h2>
             <p>€22,00</p>
             <button onclick="addToCart('Heavyweight Wide-Leg Jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 10.png" alt="Product afbeelding">
             <h2>Comfy Street Baggy Pants</h2>
             <p>€28,00</p>
             <button onclick="addToCart('Comfy Street Baggy Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 11.png" alt="Product afbeelding">
             <h2>90s Throwback Baggy Jeans</h2>
             <p>€24,99</p>
             <button onclick="addToCart('90s Throwback Baggy Jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 12.png" alt="Product afbeelding">
             <h2>Skater Fit Denim</h2>
             <p>€17,00</p>
             <button onclick="addToCart('Skater Fit Denim')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 13.png" alt="Product afbeelding">
             <h2>Loose-Fit Carpenter Pants</h2>
             <p>€15,00</p>
             <button onclick="addToCart('Loose-Fit Carpenter Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 14.png" alt="Product afbeelding">
             <h2>Chill Mode Wide Pants</h2>
             <p>€12,00</p>
             <button onclick="addToCart('Chill Mode Wide Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 15.png" alt="Product afbeelding">
             <h2>Extreme Comfort Baggy Jeans</h2>
             <p>€30,00</p>
             <button onclick="addToCart('Extreme Comfort Baggy Jeans')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 16.png" alt="Product afbeelding">
             <h2>Modern Oversized Denim</h2>
             <p>€24,99</p>
             <button onclick="addToCart('Modern Oversized Denim')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 17.png" alt="Product afbeelding">
             <h2>Casual Wide-Leg Pants</h2>
             <p>€23,00</p>
             <button onclick="addToCart('Casual Wide-Leg Pants')">Toevoegen aan winkelwagen</button>
         </div>
-
+        
         <div class="product-card">
             <img src="baggy clothes kleren/image copy 18.png" alt="Product afbeelding">
             <h2>Street Classic Baggy Jeans</h2>
             <p>€24,00</p>
             <button onclick="addToCart('Street Classic Baggy Jeans')">Toevoegen aan winkelwagen</button>
         </div>
- 
+
+
+
     </div>
 
     <footer>
@@ -375,7 +387,36 @@
         function toggleSidebar() {
             document.querySelector('.sidebar').classList.toggle('active');
         }
+
+        var priceSlider = document.querySelector('.price-slider');
+        var priceValue = document.querySelector('.price-value');
+
+        noUiSlider.create(priceSlider, {
+            start: [0, 50],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            format: {
+                to: function (value) {
+                    return '€' + value.toFixed(2);
+                },
+                from: function (value) {
+                    return value.replace('€', '');
+                }
+            }
+        });
+
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            priceValue.innerText = values.join(' - ');
+        });
+
+  
     </script>
 </body>
 
 </html>
+
+
+
