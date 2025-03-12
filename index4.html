@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         body {
             font-family: "Roboto Condensed", serif;
@@ -25,12 +26,13 @@
             text-align: center;
             color: white;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
 
         nav {
             display: flex;
+            margin-left: 300px;
         }
 
         nav a {
@@ -60,6 +62,29 @@
         .topnav input[type=text]:focus {
             border-color: #2196F3;
             box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 2px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .product-container {
@@ -108,102 +133,102 @@
             background: lightskyblue;
         }
 
-        .sidebar {
-            width: 250px;
-            background: black;
-            padding: 20px;
-            height: 340vh;
-            position: fixed;
-            top: 2px;
-            left: 0;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-
-        .sidebar h2 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        #sidebarafbeelding {
-            width: 260px;
-            height: 200px;
-            margin-top: 150px;
-
-        }
-
-        #winkelwagen {
-            width: 70px;
-            margin-top: 60px;
-            background-color: black;
-        }
-
-        #results {
+        .sidebar-mobile-toggle {
             display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-mobile-toggle {
+                display: block;
+                cursor: pointer;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+                margin-left: 0;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+
+        footer {
             background-color: white;
-            border: 1px solid #ccc;
-            width: 200px;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
         }
 
-        #results li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+        .logoss img {
+            height: 120px;
         }
 
-        #results li:hover {
-            background-color: #f1f1f1;
-            cursor: pointer;
-        }
-
-        footer{
-            background-color: white;
-            padding: 100px;
-            margin-top: 1px;
-            height: 100px;
-            align-items: center;
-            margin-left: 600px;
-            
-        }
-
-        #fotor{
-            width: 100px;
+        #price-range {
+            width: 267px;
+            margin: 20% auto;
+            text-align: center;
+            margin-left: -10px;
         }
     </style>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>
 
 <body>
+    <div class="sidebar-mobile-toggle" onclick="toggleSidebar()">☰</div>
     <header>
+
         <nav>
             <a href="index.html">DR homepage</a>
             <a href="index2.html">Baggy Pants</a>
             <a href="index3.html">Sweatshirts</a>
             <a href="index4.html">Hats</a>
-            <a href="index5.html">Get your items</button></a>
+            <a href="index5.html">Get you Items!</a>
             <a href="#">Contact us</a>
         </nav>
 
-
         <div class="topnav">
             <input type="text" placeholder="Search..">
-            <ul id="results">
-                <li>Adele</li>
-                <li>Agnes</li>
-                <li>Billy</li>
-                <li>Bob</li>
-                <li>Calvin</li>
-                <li>Christina</li>
-                <li>Cindy</li>
-            </ul>
+        </div>
+
+        <div class="logoss">
+            <img src="assets/img/image.png" alt="logoss">
         </div>
     </header>
+
+    <div class="sidebar">
+        <h2>Selecteer maat</h2>
+        <label for="size">Kies je maat:</label>
+        <select id="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+
+       
+        <div id="price-range">
+            <div class="section price">
+                <div class="price-slider"></div>
+                <p class="price-value">€0 - €50</p>
+            </div>
+        </div>
+    </div>
 
     <div class="product-container">
         <div class="product-card" data-name="De Stijlpet" data-price="15.99">
@@ -345,92 +370,50 @@
             <p>€21,50</p>
             <button class="add-to-cart">Add to Cart</button>
         </div>
-        
-        <div class="product-card" data-name="De Classic Cap" data-price="17.75">
-            <img src="hats/image copy 20.png" alt="De Classic Cap">
-            <h2>De Classic Cap</h2>
-            <p>€17,75</p>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
-        
-
-        </div>
-        <footer>
-            <p>Our Services Are 100% real</p>
-       <a href="#">Socials</a>
-       <a href="#">Women clothes</a>
-       <a href="#">Instagram</a>
-       <a href="#">Facebook</a>
-       <img src="assets/img/image.png" alt="fotor" id="fotor">
-
-   </footer>
-
-
-    <div class="sidebar">
-        <h2>Selecteer maat</h2>
-        <label for="size">Kies je maat:</label>
-        <select id="size">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-        </select>
-
-        <h2>Filter op prijs</h2>
-        <label for="min-price">Min:</label>
-        <input type="number" id="min-price" placeholder="€0">
-        <label for="max-price">Max:</label>
-        <input type="number" id="max-price" placeholder="€100">
-        <button onclick="filterByPrice()">Filter</button>
-
-        <h2><img src="assets/img/image copy.png" alt="winkelwagen" id="winkelwagen"></h2>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Totaal: €0,00</p>
-    
-
-
-        <img src="assets/img/image.png" alt="sidebarafbeelding" id="sidebarafbeelding">
-
+ 
     </div>
 
+    <footer>
+        <p>Our Services Are 100% real</p>
+        <a href="#">Socials</a>
+        <a href="#">Women clothes</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+    </footer>
+
     <script>
-        function addToCart(productName) {
-            alert(productName + " toegevoegd aan winkelwagen!");
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
         }
-    </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+        var priceSlider = document.querySelector('.price-slider');
+        var priceValue = document.querySelector('.price-value');
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.getElementById("search");
-            const resultsList = document.getElementById("results");
-
-            // Verberg de lijst standaard
-            resultsList.style.display = "none";
-
-            // Toon de lijst wanneer de zoekbalk wordt aangeklikt
-            searchInput.addEventListener("focus", function () {
-                resultsList.style.display = "block";
-            });
-
-            // Verberg de lijst wanneer je ergens anders klikt
-            document.addEventListener("click", function (event) {
-                if (!searchInput.contains(event.target) && !resultsList.contains(event.target)) {
-                    resultsList.style.display = "none";
+        noUiSlider.create(priceSlider, {
+            start: [0, 50],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            format: {
+                to: function (value) {
+                    return '€' + value.toFixed(2);
+                },
+                from: function (value) {
+                    return value.replace('€', '');
                 }
-            });
+            }
         });
+
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            priceValue.innerText = values.join(' - ');
+        });
+
+  
     </script>
-
-
 </body>
 
-
-
 </html>
+
+

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
         body {
             font-family: "Roboto Condensed", serif;
@@ -25,12 +26,13 @@
             text-align: center;
             color: white;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
 
         nav {
             display: flex;
+            margin-left: 300px;
         }
 
         nav a {
@@ -60,6 +62,29 @@
         .topnav input[type=text]:focus {
             border-color: #2196F3;
             box-shadow: 2px 2px 8px rgba(33, 150, 243, 0.5);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 2px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
         }
 
         .product-container {
@@ -108,254 +133,83 @@
             background: lightskyblue;
         }
 
-        .sidebar {
-            width: 250px;
-            background: black;
-            padding: 20px;
-            height: 340vh;
-            position: fixed;
-            top: 2px;
-            left: 0;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-            color: white;
-        }
-
-        .sidebar h2 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .sidebar p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-
-        #sidebarafbeelding {
-            width: 260px;
-            height: 200px;
-            margin-top: 150px;
-
-        }
-
-        #winkelwagen {
-            width: 70px;
-            margin-top: 60px;
-            background-color: black;
-        }
-
-        #results {
+        .sidebar-mobile-toggle {
             display: none;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .sidebar-mobile-toggle {
+                display: block;
+                cursor: pointer;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+                margin-left: 0;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav a {
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+        }
+
+        footer {
             background-color: white;
-            border: 1px solid #ccc;
-            width: 200px;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
         }
 
-        #results li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+        .logoss img {
+            height: 120px;
         }
 
-        #results li:hover {
-            background-color: #f1f1f1;
-            cursor: pointer;
-        }
-
-        footer{
-            background-color: white;
-            padding: 100px;
-            margin-top: 1px;
-            height: 100px;
-            align-items: center;
-            margin-left: 600px;
-            
-        }
-
-        #fotor{
-            width: 100px;
+        #price-range {
+            width: 267px;
+            margin: 20% auto;
+            text-align: center;
+            margin-left: -10px;
         }
     </style>
 </head>
+<link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>
 
 <body>
+    <div class="sidebar-mobile-toggle" onclick="toggleSidebar()">☰</div>
     <header>
+
         <nav>
             <a href="index.html">DR homepage</a>
             <a href="index2.html">Baggy Pants</a>
             <a href="index3.html">Sweatshirts</a>
             <a href="index4.html">Hats</a>
-            <a href="index5.html">Get you Items!</a> 
+            <a href="index5.html">Get you Items!</a>
             <a href="#">Contact us</a>
         </nav>
 
-
         <div class="topnav">
             <input type="text" placeholder="Search..">
-            <ul id="results">
-                <li>Adele</li>
-                <li>Agnes</li>
-                <li>Billy</li>
-                <li>Bob</li>
-                <li>Calvin</li>
-                <li>Christina</li>
-                <li>Cindy</li>
-            </ul>
+        </div>
+
+        <div class="logoss">
+            <img src="assets/img/image.png" alt="logoss">
         </div>
     </header>
-
-    <div class="product-container">
-        <div class="product-card">
-            <img src="sweatshirts/image.png" alt="Product afbeelding">
-            <h2>Classic Sweatshirt</h2>
-            <p>€10,00</p>
-            <button onclick="addToCart('Classic Sweatshirt')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy.png" alt="Product afbeelding">
-            <h2>Urban Vibe</h2>
-            <p>€10,99</p>
-            <button onclick="addToCart('Urban Vibe')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 21.png" alt="Product afbeelding">
-            <h2>Midnight Comfort</h2>
-            <p>€11,00</p>
-            <button onclick="addToCart('Midnight Comfort')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 3.png" alt="Product afbeelding">
-            <h2>Cozy Edge</h2>
-            <p>€13,00</p>
-            <button onclick="addToCart('Cozy Edge')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 4.png" alt="Product afbeelding">
-            <h2>Street Pulse</h2>
-            <p>€13,99</p>
-            <button onclick="addToCart('Street Pulse')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 5.png" alt="Product afbeelding">
-            <h2>Chill Mode</h2>
-            <p>€12,99</p>
-            <button onclick="addToCart('Chill Mode')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 6.png" alt="Product afbeelding">
-            <h2>Soft Horizon</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Soft Horizon')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 8.png" alt="Product afbeelding">
-            <h2>Rebel Soul</h2>
-            <p>€18,99</p>
-            <button onclick="addToCart('Rebel Soul')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 9.png" alt="Product afbeelding">
-            <h2>Pure Snug</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Pure Snug')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 10.png" alt="Product afbeelding">
-            <h2>Velvet Drive</h2>
-            <p>€12,99</p>
-            <button onclick="addToCart('Velvet Drive')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 11.png" alt="Product afbeelding">
-            <h2>Cloud Runner</h2>
-            <p>€12,99</p>
-            <button onclick="addToCart('Cloud Runner')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 12.png" alt="Product afbeelding">
-            <h2>Zen Stitch</h2>
-            <p>€9,99</p>
-            <button onclick="addToCart('Zen Stitch')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 13.png" alt="Product afbeelding">
-            <h2>Firefly Glow</h2>
-            <p>€13,99</p>
-            <button onclick="addToCart('Firefly Glow')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 14.png" alt="Product afbeelding">
-            <h2>Retro Chill</h2>
-            <p>€19,99</p>
-            <button onclick="addToCart('Retro Chill')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 15.png" alt="Product afbeelding">
-            <h2>Infinite Ease</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Infinite Ease')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 16.png" alt="Product afbeelding">
-            <h2>Daydream Fade</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Daydream Fade')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 17.png" alt="Product afbeelding">
-            <h2>Lunar Hug</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Lunar Hug')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 18.png" alt="Product afbeelding">
-            <h2>Winter Breeze</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Winter Breeze')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 19.png" alt="Product afbeelding">
-            <h2>Neon Drift</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Neon Drift')">Toevoegen aan winkelwagen</button>
-        </div>
-    
-        <div class="product-card">
-            <img src="sweatshirts/image copy 20.png" alt="Product afbeelding">
-            <h2>Dawn Snuggle</h2>
-            <p>€21,99</p>
-            <button onclick="addToCart('Dawn Snuggle')">Toevoegen aan winkelwagen</button>
-        </div>
-    </div>
-    <footer>
-        <p>Our Services Are 100% real</p>
-   <a href="#">Socials</a>
-   <a href="#">Women clothes</a>
-   <a href="#">Instagram</a>
-   <a href="#">Facebook</a>
-   <img src="assets/img/image.png" alt="fotor" id="fotor">
-
-</footer>
-
 
     <div class="sidebar">
         <h2>Selecteer maat</h2>
@@ -367,60 +221,198 @@
             <option value="XL">XL</option>
         </select>
 
-        <h2>Filter op prijs</h2>
-        <label for="min-price">Min:</label>
-        <input type="number" id="min-price" placeholder="€0">
-        <label for="max-price">Max:</label>
-        <input type="number" id="max-price" placeholder="€100">
-        <button onclick="filterByPrice()">Filter</button>
-
-        <h2><img src="assets/img/image copy.png" alt="winkelwagen" id="winkelwagen"></h2>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Totaal: €0,00</p>
-
-
-        <img src="assets/img/image.png" alt="sidebarafbeelding" id="sidebarafbeelding">
-
+       
+        <div id="price-range">
+            <div class="section price">
+                <div class="price-slider"></div>
+                <p class="price-value">€0 - €50</p>
+            </div>
+        </div>
     </div>
 
+    <div class="product-container">
+        <div class="product-card">
+            <img src="sweatshirts/image.png" alt="Product afbeelding">
+            <h2>Classic Sweatshirt</h2>
+            <p>€10,00</p>
+            <button onclick="addToCart('Classic Sweatshirt')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy.png" alt="Product afbeelding">
+            <h2>Urban Vibe</h2>
+            <p>€10,99</p>
+            <button onclick="addToCart('Urban Vibe')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 21.png" alt="Product afbeelding">
+            <h2>Midnight Comfort</h2>
+            <p>€11,00</p>
+            <button onclick="addToCart('Midnight Comfort')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 3.png" alt="Product afbeelding">
+            <h2>Cozy Edge</h2>
+            <p>€13,00</p>
+            <button onclick="addToCart('Cozy Edge')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 4.png" alt="Product afbeelding">
+            <h2>Street Pulse</h2>
+            <p>€13,99</p>
+            <button onclick="addToCart('Street Pulse')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 5.png" alt="Product afbeelding">
+            <h2>Chill Mode</h2>
+            <p>€12,99</p>
+            <button onclick="addToCart('Chill Mode')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 6.png" alt="Product afbeelding">
+            <h2>Soft Horizon</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Soft Horizon')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 8.png" alt="Product afbeelding">
+            <h2>Rebel Soul</h2>
+            <p>€18,99</p>
+            <button onclick="addToCart('Rebel Soul')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 9.png" alt="Product afbeelding">
+            <h2>Pure Snug</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Pure Snug')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 10.png" alt="Product afbeelding">
+            <h2>Velvet Drive</h2>
+            <p>€12,99</p>
+            <button onclick="addToCart('Velvet Drive')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 11.png" alt="Product afbeelding">
+            <h2>Cloud Runner</h2>
+            <p>€12,99</p>
+            <button onclick="addToCart('Cloud Runner')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 12.png" alt="Product afbeelding">
+            <h2>Zen Stitch</h2>
+            <p>€9,99</p>
+            <button onclick="addToCart('Zen Stitch')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 13.png" alt="Product afbeelding">
+            <h2>Firefly Glow</h2>
+            <p>€13,99</p>
+            <button onclick="addToCart('Firefly Glow')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 14.png" alt="Product afbeelding">
+            <h2>Retro Chill</h2>
+            <p>€19,99</p>
+            <button onclick="addToCart('Retro Chill')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 15.png" alt="Product afbeelding">
+            <h2>Infinite Ease</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Infinite Ease')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 16.png" alt="Product afbeelding">
+            <h2>Daydream Fade</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Daydream Fade')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 17.png" alt="Product afbeelding">
+            <h2>Lunar Hug</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Lunar Hug')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 18.png" alt="Product afbeelding">
+            <h2>Winter Breeze</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Winter Breeze')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 19.png" alt="Product afbeelding">
+            <h2>Neon Drift</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Neon Drift')">Toevoegen aan winkelwagen</button>
+        </div>
+        
+        <div class="product-card">
+            <img src="sweatshirts/image copy 20.png" alt="Product afbeelding">
+            <h2>Dawn Snuggle</h2>
+            <p>€21,99</p>
+            <button onclick="addToCart('Dawn Snuggle')">Toevoegen aan winkelwagen</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Our Services Are 100% real</p>
+        <a href="#">Socials</a>
+        <a href="#">Women clothes</a>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+    </footer>
+
     <script>
-        function addToCart(productName) {
-            alert(productName + " toegevoegd aan winkelwagen!");
+        function toggleSidebar() {
+            document.querySelector('.sidebar').classList.toggle('active');
         }
-    </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+        var priceSlider = document.querySelector('.price-slider');
+        var priceValue = document.querySelector('.price-value');
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const searchInput = document.getElementById("search");
-            const resultsList = document.getElementById("results");
-
-            // Verberg de lijst standaard
-            resultsList.style.display = "none";
-
-            // Toon de lijst wanneer de zoekbalk wordt aangeklikt
-            searchInput.addEventListener("focus", function () {
-                resultsList.style.display = "block";
-            });
-
-            // Verberg de lijst wanneer je ergens anders klikt
-            document.addEventListener("click", function (event) {
-                if (!searchInput.contains(event.target) && !resultsList.contains(event.target)) {
-                    resultsList.style.display = "none";
+        noUiSlider.create(priceSlider, {
+            start: [0, 50],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 100
+            },
+            format: {
+                to: function (value) {
+                    return '€' + value.toFixed(2);
+                },
+                from: function (value) {
+                    return value.replace('€', '');
                 }
-            });
+            }
         });
+
+        priceSlider.noUiSlider.on('update', function (values, handle) {
+            priceValue.innerText = values.join(' - ');
+        });
+
+  
     </script>
-
-
 </body>
 
-
-
 </html>
+
+

@@ -1,46 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Webshop</title>
     <style>
-        .form-row {
-            margin-bottom: 30px;
-
-        }
-        .container{
-            background-color:white;
-            width: 350px;
-            height: 100vh;
-        }
-        
-
-        .gender-options {
-            display: flex;
-            gap: 15px; 
-        }
-
         body {
-            background-color: lightblue;
-            font-family: "Roboto Condensed", serif;
+            font-family: "Roboto Condensed", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
         }
-        
+
+        header {
+            background: black;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            height: 100px;
+        }
+
+        .scrollmenu {
+            background-color: black;
+            overflow: auto;
+            white-space: nowrap;
+            position: fixed;
+            top: 80px;
+            width: 100%;
+            z-index: 1001;
+        }
+
+        .scrollmenu a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            margin-left: 400px;
+            margin-top: 280px;
+        }
+
+        .images {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .images img {
+            width: 280px;
+            height: auto;
+        }
+
+
+
+        /* Hamburger menu styling */
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: white;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 250px;
+                padding: 15px;
+                position: fixed;
+                top: 100px;
+                left: -250px;
+            }
+
+            .container {
+                margin-left: 0;
+                margin-top: 160px;
+                flex-direction: column;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+        }
+
+        .form-row {
+            margin-bottom: 600px;
+
+        }
+
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .form-row label {
+            width: 30%;
+            font-weight: bold;
+        }
+
+        .form-row input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .gender-options input,
+        #voorwaarden input {
+            margin-right: 100px;
+        }
+
+        input[type="submit"] {
+            margin-top: 2px;
+            padding: 10px 20px;
+            background-color: lightblue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .sidebarr {
+            width: 350px;
+            background: black;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 100px;
+            left: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            transition: transform 0.3s ease-in-out;
+            margin-left: 1150px;
+        }
+
+        .sidebar h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
     </style>
 </head>
+
 <body>
     <div class="row">
         <div class="col-75">
             <div class="container">
-                    <div class="row">
-                        <div class="col-20">
-                            <form action="bedankt.html">
-                                <div class="form-row">
+                <div class="row">
+                    <div class="col-20">
+                        <form action="results.html" method="GET" name="mijnFormulier" onsubmit="return validateForm()"></form>
+                            <div class="form-row">
+                                <form action="results.html" method="GET" name="mijnFormulier" onsubmit="return validateForm()">
                                     <h3>Gegevens Invoer</h3>
-                                    <label for="aanhef">Aanhef</label><br>
+                                    <label for="aanhef">Aanhef:</label><br>
                                     <div class="gender-options">
                                         <input type="radio" id="dhr" name="aanhef" value="Dhr." required>
                                         <label for="dhr">Dhr.</label>
@@ -51,75 +211,159 @@
                                         <input type="radio" id="anders" name="aanhef" value="Anders" required>
                                         <label for="anders">Anders</label>
                                     </div>
-                                </div>
+                                    <br><br>
                             
-                                <div class="form-row">
-                                    <label for="voornaam">Voornaam</label>
-                                    <input type="text" id="voornaam" name="voornaam" placeholder="Voornaam" required>
-                                </div>
+                                    <!-- Andere gegevens -->
+                                    <div class="form-row">
+                                        <label for="tussenvoegsel">Tussenvoegsel:</label>
+                                        <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel">
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="tussenvoegsel">Tussenvoegsel</label>
-                                    <input type="text" id="tussenvoegsel" name="tussenvoegsel" placeholder="Tussenvoegsel">
-                                </div>
+                                    <div class="form-row">
+                                        <label for="achternaam">Achternaam:</label>
+                                        <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="achternaam">Achternaam</label>
-                                    <input type="text" id="achternaam" name="achternaam" placeholder="Achternaam" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="straatnaam">Straatnaam:</label>
+                                        <input type="text" id="straatnaam" name="straatnaam" placeholder="Straatnaam" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="straatnaam">Straatnaam</label>
-                                    <input type="text" id="straatnaam" name="straatnaam" placeholder="Straatnaam" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="huisnummer">Huisnummer:</label>
+                                        <input type="text" id="huisnummer" name="huisnummer" placeholder="Huisnummer" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="huisnummer">Huisnummer</label>
-                                    <input type="text" id="huisnummer" name="huisnummer" placeholder="Huisnummer" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="postcode">Postcode:</label>
+                                        <input type="text" id="postcode" name="postcode" placeholder="Postcode" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="postcode">Postcode</label>
-                                    <input type="text" id="postcode" name="postcode" placeholder="Postcode" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="land">Land:</label>
+                                        <input type="text" id="land" name="land" placeholder="Land" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="land">Land</label>
-                                    <input type="text" id="land" name="land" placeholder="Land" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="telefoonnummer">Telefoonnummer:</label>
+                                        <input type="tel" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="email">E-mailadres</label>
-                                    <input type="email" id="email" name="email" placeholder="E-mailadres" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="geboortedatum">Geboortedatum:</label>
+                                        <input type="date" id="geboortedatum" name="geboortedatum" required>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="telefoonnummer">Telefoonnummer</label>
-                                    <input type="tel" id="telefoonnummer" name="telefoonnummer" placeholder="Telefoonnummer" required>
-                                </div>
+                                    <div class="form-row">
+                                        <label for="voorwaarden">
+                                            <input type="checkbox" id="voorwaarden" name="voorwaarden" required>
+                                            Algemene voorwaarden accepteren
+                                        </label>
+                                    </div>
                             
-                                <div class="form-row">
-                                    <label for="geboortedatum">Geboortedatum</label>
-                                    <input type="date" id="geboortedatum" name="geboortedatum" required>
-                                </div>
-                            
-                                <div class="form-row">
-                                    <label for="voorwaarden">
-                                        <input type="checkbox" id="voorwaarden" name="voorwaarden" required>
-                                        Algemene voorwaarden accepteren
-                                    </label>
-                                </div>
-                            
-                                <div class="form-row">
-                                    <input type="submit" value="Verzenden">
-                                </div>
-                            </form>
-                            
-                        </div>
+                                    <div class="form-row">
+                                        <input type="submit" value="Verzenden">
+                                    </div>
+                                </form>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
+
+    <header>
+        <h1>DR</h1>
+
+        <div class="scrollmenu">
+            <a href="index.html">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
+
+
+        <button class="hamburger-menu" onclick="toggleSidebar()">☰</button>
+    </header>
+
+
+    <div class="sidebar" id="sidebar">
+        <h2>Over Ons</h2>
+        <p>Over DR – Meer dan alleen kleding
+            DR is niet zomaar een kledingmerk. Het is een statement, een lifestyle, en een community voor iedereen
+            die
+            zichzelf wil uitdrukken door mode. Wij geloven dat kleding meer is dan alleen stof – het is een manier
+            om je
+            persoonlijkheid en energie te laten zien.
+        </p>
+        <p>Wat DR uniek maakt:</p>
+        <ul>
+            <li>🔥 Comfort & Stijl – Onze kleding is niet alleen fashionable, maar ook super comfortabel.</li>
+            <li>🔥 Duurzame Kwaliteit – Materialen die lang meegaan en prettig aanvoelen.</li>
+            <li>✔️ Baggy Pants – De perfecte combinatie van comfort en streetwear vibes.</li>
+            <li>✔️ Sweatshirts & T-Shirts – Must-haves voor een minimalistische outfit.</li>
+            <li>✔️ Hats & Accessories – De finishing touch voor jouw stijl.</li>
+        </ul>
+    </div>
+
+    
+    <div class="sidebarr" id="sidebarr">
+
+        <h2>Bedankt voor je bestelling!</h2>
+        <p>We willen je enorm bedanken voor je bestelling bij **DR**! Je hebt niet alleen je nieuwe favoriete kleding gekocht, maar je hebt ook gekozen voor een merk dat staat voor kwaliteit, comfort, en een unieke stijl.</p>
+        <p>Wat kun je verwachten:</p>
+        <ul>
+            <li>🔥 **Jouw bestelling wordt snel verwerkt** – We zorgen ervoor dat alles veilig en snel naar je toe komt.</li>
+            <li>🔥 **Duurzame en comfortabele kleding** – Je kunt rekenen op de beste kwaliteit en een geweldige pasvorm.</li>
+            <li>✔️ **Verzending** – Je ontvangt binnenkort een bevestiging van je verzending met de trackinggegevens.</li>
+            <li>✔️ **Klantenservice** – Mocht je vragen hebben, staan we altijd voor je klaar om te helpen.</li>
+        </ul>
+        <p>We hopen dat je geniet van je nieuwe items en dat ze je perfect helpen om je persoonlijkheid en stijl uit te drukken. Bedankt dat je deel uitmaakt van de **DR** community!</p>
+        <p>Met vriendelijke groet,<br>Het **DR** team</p>
+        </div>
+
+
+
+    <footer>
+        <p>Our Services are 100% real</p>
+    </footer>
+
+    <script>
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarStyle = window.getComputedStyle(sidebar);
+            if (sidebarStyle.left === "0px") {
+                sidebar.style.left = "-250px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        }
+    </script>
+
+<script>
+    // Reset foutmeldingen bij focus op invoervelden
+    function resetAlert() {
+        document.getElementById("alertBijNaam").innerHTML = "";
+        document.getElementById("alertBijEmail").innerHTML = "";
+    }
+
+    // Formulier validatie
+    function validateForm() {
+        let voornaam = document.forms["mijnFormulier"]["voornaam"].value;
+        if (voornaam == "") {
+            document.getElementById("alertBijNaam").innerHTML = "Naam moet ingevuld worden.";
+            return false;
+        }
+
+        let email = document.forms["mijnFormulier"]["email"].value;
+        if (email == "") {
+            document.getElementById("alertBijEmail").innerHTML = "Email moet ingevuld worden.";
+            return false;
+        }
+
+    }
+</script>
+
 </body>
-</html>

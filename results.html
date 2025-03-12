@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultaten</title>
+</head>
+
+<body>
+    <h1>Bedankt voor je inzending!</h1>
+
+    <h3>Gegevens:</h3>
+    <p><strong>Aanhef:</strong> <span id="resultAanhef"></span></p>
+    <p><strong>Voornaam:</strong> <span id="resultVoornaam"></span></p>
+    <p><strong>Tussenvoegsel:</strong> <span id="resultTussenvoegsel"></span></p>
+    <p><strong>Achternaam:</strong> <span id="resultAchternaam"></span></p>
+    <p><strong>Straatnaam:</strong> <span id="resultStraatnaam"></span></p>
+    <p><strong>Huisnummer:</strong> <span id="resultHuisnummer"></span></p>
+    <p><strong>Postcode:</strong> <span id="resultPostcode"></span></p>
+    <p><strong>Land:</strong> <span id="resultLand"></span></p>
+    <p><strong>Telefoonnummer:</strong> <span id="resultTelefoonnummer"></span></p>
+    <p><strong>Geboortedatum:</strong> <span id="resultGeboortedatum"></span></p>
+
+    <script>
+        // Haal de query parameters op uit de URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const aanhef = urlParams.get('aanhef');
+        const voornaam = urlParams.get('voornaam');
+        const tussenvoegsel = urlParams.get('tussenvoegsel');
+        const achternaam = urlParams.get('achternaam');
+        const straatnaam = urlParams.get('straatnaam');
+        const huisnummer = urlParams.get('huisnummer');
+        const postcode = urlParams.get('postcode');
+        const land = urlParams.get('land');
+        const telefoonnummer = urlParams.get('telefoonnummer');
+        const geboortedatum = urlParams.get('geboortedatum');
+
+        // Vul de gegevens in de HTML
+        document.getElementById('resultAanhef').innerText = aanhef;
+        document.getElementById('resultVoornaam').innerText = voornaam;
+        document.getElementById('resultTussenvoegsel').innerText = tussenvoegsel;
+        document.getElementById('resultAchternaam').innerText = achternaam;
+        document.getElementById('resultStraatnaam').innerText = straatnaam;
+        document.getElementById('resultHuisnummer').innerText = huisnummer;
+        document.getElementById('resultPostcode').innerText = postcode;
+        document.getElementById('resultLand').innerText = land;
+        document.getElementById('resultTelefoonnummer').innerText = telefoonnummer;
+        document.getElementById('resultGeboortedatum').innerText = geboortedatum;
+    </script>
+</body>
+
+</html>
